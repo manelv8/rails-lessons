@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'will_paginate'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 # Use Capistrano for deployment

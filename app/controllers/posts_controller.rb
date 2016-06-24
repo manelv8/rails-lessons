@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    page = params[:page].blank? ? 1 : params[:page]
+    @posts = Post.paginate(page: page)
   end
 
   # GET /posts/1

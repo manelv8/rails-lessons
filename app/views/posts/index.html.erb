@@ -2,9 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= will_paginate @posts %>
+
 <table class="table table-striped">
   <thead>
     <tr>
+      <th><%= model_class.human_attribute_name(:comments) %></th>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:body) %></th>
@@ -15,6 +19,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= link_to 'ver comments', post_comments_path(post) %></td>
         <td><%= link_to post.id, post_path(post) %></td>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
