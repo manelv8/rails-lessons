@@ -1,7 +1,7 @@
 class AddColumnPostToComment < ActiveRecord::Migration
   def up
     change_table :comments do |t|
-      t.belongs_to :post, index: true, nil: false
+      t.belongs_to :post, null: false, foreign_key: true
     end
 
     Comment.find_each do |comment|
