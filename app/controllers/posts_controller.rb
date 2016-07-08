@@ -2,11 +2,15 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  # after_action :verify_authorized
+
   # GET /posts
   # GET /posts.json
   def index
+    authorize Post
+
     page = params[:page].blank? ? 1 : params[:page]
-    @posts = Post.paginate(page: page)
+    @posts = policy_scope(Post).paginate(page: page)
   end
 
   # GET /posts/1
@@ -16,6 +20,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    authorize Post, :create?
+
     @post = Post.new
   end
 
@@ -26,6 +32,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    authorize Post, :create?
+
     @post = Post.new(post_params)
     @post.user = current_user
 
@@ -57,6 +65,8 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    authorize @post
+
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }

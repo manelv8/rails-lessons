@@ -107,6 +107,8 @@ GEM
     pry-rescue (1.4.4)
       interception (>= 0.5)
       pry
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -197,6 +199,7 @@ DEPENDENCIES
   pg
   pry-rails
   pry-rescue
+  pundit
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -209,4 +212,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
